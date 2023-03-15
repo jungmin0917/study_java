@@ -1,35 +1,30 @@
 package baekjoon;
 
-import java.util.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		String result = "";
 		
-//		Scanner sc = new Scanner(System.in);
-//		
-//		int n = sc.nextInt();
+		Scanner sc = new Scanner(System.in);
 		
-//		sc.close();
-		
-		// BufferedReader, BufferedWriter를 사용하면 더욱 빠르게 입출력이 가능함
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		int n = Integer.parseInt(br.readLine()); // 이거 쓰려면 exception handle을 해야 한다고 함
+		while(true) {
+			String input = sc.nextLine();
+			
+			if(input.isEmpty()) {
+				break;
+			}
+			
+			String[] array = input.split(" ");
 
-		for (int i = 1; i <= n; i++) {
-			bw.write(i + "\n"); // 버퍼에 모아 둠
+			int a = Integer.parseInt(array[0]);
+			int b = Integer.parseInt(array[1]);
+			
+			result += (a + b) + "\n";
 		}
 		
-		bw.flush(); // 버퍼에 모아둔 것을 출력함
-        br.close();
-        bw.close();
+		sc.close();
 		
-//		System.out.println(result);
+		System.out.println(result);
 	}
 }
