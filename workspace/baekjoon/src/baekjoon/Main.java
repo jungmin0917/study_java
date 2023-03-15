@@ -1,6 +1,7 @@
 package baekjoon;
 
 import java.util.*;
+import java.util.stream.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -8,12 +9,13 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int a = sc.nextInt();
-		int b = sc.nextInt();
-
-		result = (a > b) ? ">" : (a < b ? "<" : "==");
+		int n = sc.nextInt();
 		
 		sc.close();
+		
+		int sum = IntStream.rangeClosed(1, n).sum();
+		
+		result = sum + "";
 		
 		System.out.println(result);
 	}
