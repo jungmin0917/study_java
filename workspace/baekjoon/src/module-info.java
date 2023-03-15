@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author jungmin
+ *
+ */
+module baekjoon {
+}
