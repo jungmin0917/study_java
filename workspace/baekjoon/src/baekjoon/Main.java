@@ -13,7 +13,7 @@ public class Main {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
+
 		String input = br.readLine();
 		
 		StringTokenizer st = new StringTokenizer(input);
@@ -21,9 +21,9 @@ public class Main {
 		BigInteger a = new BigInteger(st.nextToken());
 		BigInteger b = new BigInteger(st.nextToken());
 		
-		BigInteger sum = a.add(b);
+		BigInteger mul = a.multiply(b);
 		
-		bw.write(sum + "");
+		bw.write(mul + "");
 		
 		bw.flush();
 		bw.close();
