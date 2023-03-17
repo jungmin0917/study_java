@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -14,16 +14,17 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		String input = br.readLine();
+		LocalDate today = LocalDate.now();
 		
-		StringTokenizer st = new StringTokenizer(input);
+		int year = today.getYear();
+		int month = today.getMonthValue();
+		int day = today.getDayOfMonth();
 		
-		BigInteger a = new BigInteger(st.nextToken());
-		BigInteger b = new BigInteger(st.nextToken());
+		String date = String.format("%d\n%02d\n%02d", year, month, day);
 		
-		BigInteger mul = a.multiply(b);
+		bw.write(date);
 		
-		bw.write(mul + "");
+//		bw.write(result);
 		
 		bw.flush();
 		bw.close();
