@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+// DAO는 Data Access Object로서, DB에 액세스하려고 사용함
 public class MemberDAO {
 	Connection conn; // connection 객체
 	PreparedStatement pstm; // prepare문
