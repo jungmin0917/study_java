@@ -11,5 +11,29 @@
 <!-- 이제 config.xml에서 이 member.xml 파일을 참조할 수 있도록 경로를 지정해줘야 한다 -->
 <!-- namespace 속성을 사용하는 이유는, 매핑 정보와 SQL문이 많은 경우 네임스페이스를 통해 이들을 논리적으로 구분하여 사용하기 위함이다 -->
 <mapper namespace="Member"> 
-
+	<!-- 여기에 DML에 관련된 태그(CRUD)들을 사용할 것이다 -->
+	
+	<!-- 참고용
+		ID VARCHAR2(500) PRIMARY KEY,
+		PW VARCHAR2(500),
+		NAME VARCHAR2(500),
+		AGE NUMBER(3)
+	-->
+	
+	<!-- select인 경우 반환값이 존재하니 resultType을 지정해줘야 한다 -->
+	<!-- 기본 자료형인 경우 _int, _double 같은 식으로 앞에 _를 붙여준다. 클래스만 앞에 _를 안 붙인다 (String 같은 경우) -->
+	<select id="checkId" parameterType="String" resultType="_int">
+		SELECT COUNT(*) FROM TABLE_MEMBER
+		WHERE ID = #{id};
+	</select>
+	
+	<!-- 자바 파일에서 Member.join 이런 식으로 접근하여, SqlSession이 id에 해당하는 쿼리문을 찾아 실행하도록 한다 -->
+	<!-- 아래의 parameterType에는 sql문에 넣을 변수의 자료형을 선언해줘야 하는데, 일일이 해시맵이나 이런 걸 쓰기는 불편하니까, 여기서 바로 우리가 미리 만들어놓았던 MemberVO 객체를 사용하는 것이다. 해당 객체에 미리 멤버변수로 타입까지 선언해놨고, 이 객체만 적어주면 자동으로 parameterType이 정해진다 -->
+	<!-- parameterType에 vo.MemberVO처럼 모든 소속값을 적어줘도 되는데, 이게 나중에 길어질 수 있으므로 parameterType에 대한 Alias(별칭)를 설정할 수 있다. (config.xml에서 설정한다) -->
+	<insert id="join" parameterType="member"> <!-- 각 쿼리에 id값을 부여하여 자바에서 id를 검색해서 쿼리하도록 한다. -->
+		INSERT INTO TABLE_MEMBER
+		(ID, PW, NAME, AGE)
+		VALUES (#{id}, #{pw}, #{name}, #{age}); <!-- MyBatis에서도 PrepardStatement 식을 지원한다 (보안상 필수) -->
+	</insert>
 </mapper>
+
