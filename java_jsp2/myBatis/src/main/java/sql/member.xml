@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- member 테이블에 관련된 SQL문을 작성할 곳 (통칭 매퍼 파일) -->
+<!-- SQL 쿼리 및 매핑 구성 정보가 포함된 매퍼 파일 -->
+
+<!-- 아래 DOCTYPE은 MyBatis 매퍼 파일에서 공통으로 사용하므로 다른 파일에서도 복붙해서 쓰면 된다 -->
+<!-- 이 경우엔 DOCTYPE mapper, DTD Mapper 3.0, mybatis-3-mapper로 작성함으로써 이 파일이 매퍼 파일로 사용될 것임을 명시한다 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 매퍼의 네임스페이스를 지정해준다 -->
+<!-- 이제 config.xml에서 이 member.xml 파일을 참조할 수 있도록 경로를 지정해줘야 한다 -->
+<!-- namespace 속성을 사용하는 이유는, 매핑 정보와 SQL문이 많은 경우 네임스페이스를 통해 이들을 논리적으로 구분하여 사용하기 위함이다 -->
+<mapper namespace="Member"> 
+
+</mapper>
