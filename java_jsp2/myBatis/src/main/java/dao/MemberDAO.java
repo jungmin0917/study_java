@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -56,4 +58,35 @@ public class MemberDAO {
 		return result > 0 ? true : false;
 	}
 	
+	// 이름, 나이 수정
+	public boolean update(MemberVO member) {
+		return sqlSession.update("Member.modify", member) == 1; // SqlSession.update() 메소드는 영향받은 레코드 수를 반환한다
+	}
+	
+	// 회원탈퇴
+	public boolean remove(String id) {
+		return sqlSession.delete("Member.remove", id) == 1; // SqlSession.delete() 메소드 역시 영향받은 레코드 수를 반환한다.
+	}
+	
+	// 아이디 조회하기 (이름, 비밀번호로)
+	public String searchId(String name, String pw) {
+		HashMap<String, String> searchMap = new HashMap<>();
+		
+		searchMap.put("name", name);
+		searchMap.put("pw", pw);
+		
+		String result = sqlSession.selectOne("Member.searchId", searchMap); // 반환값 없으면 null이 나온다고 함
+		
+		return result;
+	}
+	
+	// 나이 조회하기 (20대인 사람)
+	public List<MemberVO> searchMember() {
+		List<MemberVO> memberList = new ArrayList<>();
+		memberList = sqlSession.selectList("Member.searchMember"); // 반환값이 여러개가 될 수 있으므로 selectList를 사용한다. selectList의 반환값 타입은 List이므로 미리 선언했다가 담아놓자.
+		// Member.searchMember 쿼리문의 반환타입을 MemberVO 객체로 설정했다.
+		// selectList 메소드를 사용하면, 해당 반환타입을 하나하나씩 List에 추가하면서 담는다.
+		
+		return memberList; // arraylist 반환
+	}
 }

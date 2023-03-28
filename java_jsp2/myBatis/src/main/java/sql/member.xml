@@ -42,5 +42,27 @@
 		SELECT COUNT(*) FROM TABLE_MEMBER
 		WHERE ID = #{id} AND PW = #{pw}
 	</select>
+	
+	<update id="modify" parameterType="member">
+		UPDATE TABLE_MEMBER
+		SET NAME = #{name}, AGE = #{age}
+		WHERE ID = #{id}
+	</update>
+	
+	<delete id="remove" parameterType="String">
+		DELETE FROM TABLE_MEMBER
+		WHERE ID = #{id}
+	</delete>
+	
+	<select id="searchId" parameterType="Map" resultType="String">
+		SELECT ID FROM TABLE_MEMBER
+		WHERE NAME = #{name} AND PW = #{pw}
+	</select>
+	
+	<select id="searchMember" resultType="member">
+		SELECT * FROM TABLE_MEMBER
+		WHERE <![CDATA[age >= 20 AND age < 30]]>
+	</select>
+	
 </mapper>
 
