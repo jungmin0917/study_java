@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -27,11 +29,13 @@ public class MemberDAO {
 	// 그 이후 sqlSession 객체를 선언하였고, 이 sqlSession 클래스의 메소드와 member.xml에 적은 sql문들을 이용해 MyBatis를 이용한 DB 이용이 가능할 것이다.
 	
 	// 아이디 중복 검사
+	// join에서 분리한 이유는 ajax 등을 이용해서 따로 사용하기 위함임
 	public boolean checkId(String id) { // 리턴값이 있어야 하니 boolean (성공, 실패)
 		// 결과가 하나만 있으면 selectOne() 메소드, 결과가 여러 개면 selectList() 메소드를 사용한다.
-		int result = Integer.parseInt(sqlSession.selectOne("Member.checkId", id));
+		int result = sqlSession.selectOne("Member.checkId", id); // resultType을 _int로 적으면, MyBatis는 이것을 기본형 int가 아닌 참조 데이터타입 Integer로 매핑한다. 이것은 다시 int로 선언해줘서 쓸 필요가 있다.
 		
-		return result == 1 ? true : false;
+		return result > 0 ? true : false;
+		// returnType 속성을 통해 쿼리 결과를 매핑했기 때문에 해당 속성에 지정된 데이터 타입으로 결과가 반환된다
 	}
 	
 	// 회원가입부터 순차적으로 만들어보자
@@ -39,4 +43,17 @@ public class MemberDAO {
 		sqlSession.insert("Member.join", member); // insert(쿼리문 id, 파라미터로 사용할 객체)
 		// sqlSession.insert() 메소드의 기본 반환값은 [영향받은 레코드의 개수]이다
 	}
+	
+	// 로그인
+	public boolean login(String id, String pw) {
+		HashMap<String, String> loginMap = new HashMap<>(); // 해시맵 객체 생성
+		// 해시맵의 key값을 파라미터에 설정한 변수명으로 그대로 매핑하기 때문에 반드시 SQL문에 적었던 변수명과 같게 해 준다.
+		loginMap.put("id", id);
+		loginMap.put("pw", pw);
+		
+		int result = sqlSession.selectOne("Member.login", loginMap);
+		
+		return result > 0 ? true : false;
+	}
+	
 }

@@ -21,7 +21,7 @@ public class MyBatisConfig {
 	// 우리가 SqlSessionFactory 클래스를 로드하면서 기본적으로 설정할 부분들을 적자
 	static {
 		try {
-			String resource = "./config.xml"; // config.xml 경로 설정
+			String resource = "./config/config.xml"; // config.xml 경로 설정 (MyBatisConfig.java는 config와 같이 있는데 왜 이렇게 되는지 모르겠음) 
 			Reader reader = Resources.getResourceAsReader(resource);
 			sqlSession_f = new SqlSessionFactoryBuilder().build(reader);
 			reader.close();

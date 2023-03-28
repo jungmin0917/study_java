@@ -24,7 +24,7 @@
 	<!-- 기본 자료형인 경우 _int, _double 같은 식으로 앞에 _를 붙여준다. 클래스만 앞에 _를 안 붙인다 (String 같은 경우) -->
 	<select id="checkId" parameterType="String" resultType="_int">
 		SELECT COUNT(*) FROM TABLE_MEMBER
-		WHERE ID = #{id};
+		WHERE ID = #{id}
 	</select>
 	
 	<!-- 자바 파일에서 Member.join 이런 식으로 접근하여, SqlSession이 id에 해당하는 쿼리문을 찾아 실행하도록 한다 -->
@@ -33,7 +33,14 @@
 	<insert id="join" parameterType="member"> <!-- 각 쿼리에 id값을 부여하여 자바에서 id를 검색해서 쿼리하도록 한다. -->
 		INSERT INTO TABLE_MEMBER
 		(ID, PW, NAME, AGE)
-		VALUES (#{id}, #{pw}, #{name}, #{age}); <!-- MyBatis에서도 PrepardStatement 식을 지원한다 (보안상 필수) -->
+		VALUES (#{id}, #{pw}, #{name}, #{age}) <!-- MyBatis에서도 PrepardStatement 식을 지원한다 (보안상 필수) -->
 	</insert>
+	
+	<!-- Map 인스턴스는 키-값 형태로 구성된 데이터 구조를 갖고 있다 -->
+	<select id="login" parameterType="Map" resultType="_int"> <!-- map을 입력하면 HashMap 등의 구현체로 인스턴스를 생성하여 파라미터를 전달할 수 있다 -->
+		<!-- 결과가 1개면 성공, 0개면 실패 -->
+		SELECT COUNT(*) FROM TABLE_MEMBER
+		WHERE ID = #{id} AND PW = #{pw}
+	</select>
 </mapper>
 

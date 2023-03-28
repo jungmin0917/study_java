@@ -17,7 +17,7 @@
 			<dataSource type="POOLED"> <!-- MyBatis가 사용할 데이터 소스를 지정. POOLED 타입의 경우 커넥션 풀을 사용하도록 지정함 -->
 				<!-- 커넥션 풀을 사용하기 위한 속성들을 지정. driver, url, username, password를 지정함 -->
 				<property name="driver" value="oracle.jdbc.OracleDriver"/>
-				<property name="url" value="jdbc.oracle:thin:@localhost:1521:XE"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 				<property name="username" value="hr"/>
 				<property name="password" value="hr"/>
 			</dataSource>
