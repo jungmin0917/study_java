@@ -2,6 +2,7 @@ package com.jungmin.app.member.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,10 +39,23 @@ public class MemberFrontController extends HttpServlet{
 		// switch문으로 분기를 하자
 		switch(command) {
 			case "/member/MemberCheckIdOk.me": // 아이디 검사해주는 컨트롤러로 보내야 함
-				
+				try {
+					forward = new MemberCheckIdOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("아이디 중복검사 오류 " + e);
+				}
 				break;
 			default:
 				break;
+		}
+		
+		if(forward != null) { // forward가 null값이면 페이지 이동을 하지 않는다는 것임
+			if(forward.isRedirect()) { // 해당 forward 객체가 리다이렉트로 설정되었으면
+				resp.sendRedirect(forward.getPath());
+			}else { // 리다이렉트가 아닌 포워드 이동방식이면
+				RequestDispatcher dispatcher = req.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(req, resp); // forward 방식은 기존의 객체들을 전부 갖고 이동한다.
+			}
 		}
 	}
 }
