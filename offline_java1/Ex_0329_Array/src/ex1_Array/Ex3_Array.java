@@ -79,23 +79,50 @@ public class Ex3_Array {
 //		10원, 50원, 100원, 500원
 //		가장 적은 동전의 수를 출력하기
 		
+//		Random rand = new Random();
+//		
+//		int r = rand.nextInt(1, 501);
+//		
+//		r *= 10;
+//		
+//		int total = r;
+//
+//		int m500 = r / 500;		
+//		r -= 500 * m500;
+//		int m100 = r / 100;
+//		r -= 100 * m100;
+//		int m50 = r / 50;
+//		r -= 50 * m50;
+//		int m10 = r / 10;
+//		
+//		String res = String.format("총 금액 : %d원\n500원 : %d개\n100원 : %d개\n50원 : %d개\n10원 : %d개", total, m500, m100, m50, m10);
+//		
+//		System.out.println(res);
+		
+//		1 ~ 45의 난수를 발생시켜 로또번호 생성하기
+		
 		Random rand = new Random();
 		
-		int r = rand.nextInt(1, 501);
+		int[] arr = new int[6];
 		
-		r *= 10;
+		for (int i = 0; i < 6; i++) {
+			check: while(true) {
+				int r = rand.nextInt(1, 46);
+				
+				for (int j = 0; j < arr.length; j++) {
+					if(r == arr[j]) {
+						continue check;
+					}
+				}
+				
+				arr[i] = r;
+				break;
+				// 여기까지 무사히 왔다는 건 겹치지 않는다는 뜻
+			}
+		}
 		
-		int total = r;
-
-		int m500 = r / 500;		
-		r -= 500 * m500;
-		int m100 = r / 100;
-		r -= 100 * m100;
-		int m50 = r / 50;
-		r -= 50 * m50;
-		int m10 = r / 10;
-		
-		String res = String.format("총 금액 : %d원\n500원 : %d개\n100원 : %d개\n50원 : %d개\n10원 : %d개", total, m500, m100, m50, m10);
+		Arrays.sort(arr); // 순서대로 sort
+		String res = Arrays.toString(arr);
 		
 		System.out.println(res);
 	}

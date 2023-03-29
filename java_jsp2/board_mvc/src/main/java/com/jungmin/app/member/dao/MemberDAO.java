@@ -23,4 +23,7 @@ public class MemberDAO {
 		
 		return result > 0 ? true : false;
 	}
+	
+	// 회원가입
+	
 }
