@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MyBatis의 설정 파일로서 데이터베이스 연결 정보를 설정함 -->
+
+<!-- XML 파일이 MyBatis의 설정 파일임을 나타내고 있으며, MyBatis 3.0 버전의 DTD를 사용하고 있다 -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration> <!-- 설정 파일의 루트 태그이며, 여러 환경 설정을 포함할 수 있다. -->
+	<!-- parameterType에 대한 alias 설정 -->
+	<typeAliases>
+	
+	</typeAliases>
+
+	<environments default="development"> <!-- MyBatis가 실행될 환경을 설정함. default 속성은 기본 환경을 지정하며, development 태그는 id 속성으로 구분된 환경 설정을 정의함. -->
+		<environment id="development"> <!-- 위에서 지정한 각 환경설정 태그 -->
+			<transactionManager type="JDBC"></transactionManager> <!-- MyBatis가 사용할 트랜잭션 매니저를 지정. 이 경우 JDBC를 지정함 -->
+			<dataSource type="POOLED"> <!-- MyBatis가 사용할 데이터 소스를 지정. POOLED 타입의 경우 커넥션 풀을 사용하도록 지정함 -->
+				<!-- 커넥션 풀을 사용하기 위한 속성들을 지정. driver, url, username, password를 지정함 -->
+				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+				<property name="username" value="hr"/>
+				<property name="password" value="hr"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 매퍼 파일을 지정하는 요소. mapper 태그들을 포함함 -->
+	<mappers>
+		<mapper resource="com/jungmin/app/mybatis/sql/member.xml"/>
+	</mappers>
+</configuration>
