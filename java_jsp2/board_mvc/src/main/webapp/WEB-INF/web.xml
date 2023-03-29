@@ -17,6 +17,7 @@
   </servlet>
   
   <!-- 어떤 url 패턴에 의해 어떤 서블릿으로 가게 할 지 정함 -->
+  <!-- 사용자가 요청한 URI가 .me로 끝나면 MemberFrontController로 가게 함 -->
   <servlet-mapping>
   	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.me</url-pattern>
