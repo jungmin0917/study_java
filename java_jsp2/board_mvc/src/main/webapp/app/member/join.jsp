@@ -10,6 +10,6 @@
 	<title>회원가입</title>
 </head>
 <body>
-	
+	asdf
 </body>
 </html>
