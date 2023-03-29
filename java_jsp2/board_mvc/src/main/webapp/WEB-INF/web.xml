@@ -9,4 +9,16 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- 서블릿의 Alias를 설정 (매번 클래스를 다 적을 수 없으므로 해당 서블릿의 경로를 이름지어주는 것이다 -->
+  <servlet>
+  	<servlet-name>MemberFrontController</servlet-name>
+  	<servlet-class>com.jungmin.app.member.controller.MemberFrontController</servlet-class>
+  </servlet>
+  
+  <!-- 어떤 url 패턴에 의해 어떤 서블릿으로 가게 할 지 정함 -->
+  <servlet-mapping>
+  	<servlet-name>MemberFrontController</servlet-name>
+  	<url-pattern>*.me</url-pattern>
+  </servlet-mapping>
 </web-app>

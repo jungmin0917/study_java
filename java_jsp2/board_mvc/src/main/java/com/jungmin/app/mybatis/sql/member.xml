@@ -27,7 +27,13 @@
 	<!-- com.jungmin.....MemberVO를 config.xml에서 alias 설정했음 -->
 	<insert id="join" parameterType="member"> <!-- insert문은 resultType이 정해져 있음 -->
 		INSERT INTO JUNGMIN_MEMBER
-		(MEMBERID, MEMBERPW, MEMBERAGE, MEMBERGENDER, MEMBEREMAIL, MEMBERZIPCODE, MEMBERADDRESS, MEMBERADDRESSDETAIL, MEMBERADDRESSETC)
-		VALUES (#{memberId}, #{memberPw}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberEmail}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}, #{memberAddressEtc})
+		(memberId, memberPw, memberAge, memberGender, memberEmail, memberZipcode, memberAddress, memberAddressDetail, memberAddressEtc)
+		VALUES (#{memberId}, #{memberPw}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}, #{memberAddressEtc})
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="Map" resultType="_int">
+		SELECT COUNT(*) FROM JUNGMIN_MEMBER
+		WHERE memberId = #{memberId} AND memberPw = #{memberPw}
+	</select>
 </mapper>
