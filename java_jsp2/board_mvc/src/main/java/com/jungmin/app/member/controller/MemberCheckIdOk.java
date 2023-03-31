@@ -27,8 +27,12 @@ public class MemberCheckIdOk implements Action{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		String memberId = req.getParameter("memberId");
+		// 기본적으로 필요한 객체 생성
 		MemberDAO dao = new MemberDAO();
+		
+		String memberId = req.getParameter("memberId");
+		
+		// ajax용이므로 JSON object 생성 및 출력 스트림 생성
 		JSONObject obj = new JSONObject();
 		PrintWriter out = resp.getWriter(); // HTTP 응답에 대한 출력 스트림을 생성
 		

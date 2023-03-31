@@ -46,7 +46,19 @@ public class MemberFrontController extends HttpServlet{
 				}
 				break;
 			case "/member/MemberJoinOk.me":
-				
+				// 회원가입을 완료했을 때
+				try {
+					forward = new MemberJoinOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("회원가입 오류 " + e);
+				}
+				break;
+			// 단순 페이지 이동이면 Ok를 안 붙이기로 함
+			case "/member/MemberLogin.me":
+				// 굳이 controller 안 만들고 여기서 해결함
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath("/app/member/login.jsp");
 				break;
 			default:
 				break;

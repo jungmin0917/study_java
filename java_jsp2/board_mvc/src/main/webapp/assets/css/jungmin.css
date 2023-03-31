@@ -108,3 +108,25 @@
 }
 
 
+/* 로그인 부분 */
+input[type='button'], input[type='submit']{
+	border-radius: 0;
+}
+
+textarea{
+	resize: none;
+}
+
+label{
+	margin-top: 3%;
+}
+
+div.preview{
+	overflow: hidden;
+}
+
+div.preview img{
+	width: 90%;
+	object-fit: cover;
+	margin-left: 10%;
+}
