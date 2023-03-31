@@ -38,4 +38,12 @@
 		</div>
 	</div>
 </body>
+
+<%-- 자바스크립트 불러오는 순서 중요함!! --%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+
 </html>
