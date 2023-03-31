@@ -75,6 +75,7 @@
 .join_left textarea.term_textarea{
 	display: none;
 	margin-bottom: 5%;
+	resize: none;
 }
 
 .join_left p.join_options{
@@ -93,6 +94,10 @@
 	margin-top: 8%;
 }
 
+.join_left .join_buttons input[type="button"]{
+	border-radius: 0;
+}
+
 .join_left .join_buttons ul{
 	display: flex;
 	justify-content: center;
@@ -101,3 +106,5 @@
 .join_right div img{
 	width: 100%;
 }
+
+

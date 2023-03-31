@@ -50,7 +50,7 @@
 								<div class="p_down">
 									<div class="col-6 col-12-xsmall">
 										<p>
-											아이디 <span id="idCheck_text">중복검사</span>
+											아이디 <span id="idCheck_text"></span>
 										</p>
 										<input type="text" name="memberId" id="memberId" placeholder="6자 이상의 영문 및 숫자로 입력">
 										<br>
