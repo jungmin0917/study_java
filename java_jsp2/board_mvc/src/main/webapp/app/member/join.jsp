@@ -41,6 +41,7 @@
 					
 					<form action="${pageContext.request.contextPath}/member/MemberJoinOk.me" method="POST" name="joinForm" class="join_form">
 						<div class="join_subwrap">
+							<%-- 아래는 회원가입 입력 항목 들어가는 곳 --%>
 							<div class="join_left">
 								<p>
 									<span>*</span>
@@ -106,11 +107,73 @@
 								</div>
 								
 								<hr>
+								<p class="join_options">
+									아래 항목은 선택사항입니다.
+								</p>
 								
-								
+								<div class="p_down">
+									<p>성별</p>
+									<div class="col-4 col-12-small">
+										<input type="radio" id="male" name="memberGender" value="남자">
+										<label for="male">남자</label>
+										<input type="radio" id="female" name="memberGender" value="여자">
+										<label for="female">여자</label>
+										<input type="radio" id="none" name="memberGender" value="선택안함" checked>
+										<label for="none">선택안함</label>
+									</div>
+									
+									<p>이메일</p>
+									<input type="text" id="memberEmail" name="memberEmail" placeholder="이메일 입력">
+									<br>
+									
+									<p>우편번호</p>
+									<div class="join_zipcode">
+										<input type="text" id="memberZipcode" name="memberZipcode" class="postcodify_postcode5">
+										<ul class="actions">
+											<li>
+												<input type="button" id="postcodify_search_button" class="button primary" style="border-radius:0;" value="검색">
+											</li>
+										</ul>
+									</div>
+									<p>주소</p>
+									<input type="text" id="memberAddress" name="memberAddress" class="postcodify_address">
+									<br>
+									<p>상세주소</p>
+									<input type="text" id="memberAddressDetail" name="memberAddressDetail" class="postcodify_details">
+									<br>
+									<p>참고항목</p>
+									<input type="text" id="memberAddressEtc" name="memberAddressEtc" class="postcodify_extra_info">
+									<br>
+									<div class="col-12 join_buttons">
+										<ul class="actions">
+											<li>
+												<input type="button" class="primary" onclick="" value="완료">
+											</li>
+											<li>
+												<input type="button" class="primary" onclick="history.back()" value="취소">
+											</li>
+										</ul>
+									</div>
+								</div>
 							</div>
-							<div class="join_right">
-								asdfasdf
+							
+							<%-- 아래는 광고 들어가는 곳 --%>
+							<div class="join_right preview">
+								<div>
+									<h4>광고1</h4>
+									<img alt="광고이미지1" src="${pageContext.request.contextPath}/images/ex01.png">
+								</div>
+								<hr>
+								<div>
+									<h4>광고2</h4>
+									<img alt="광고이미지2" src="${pageContext.request.contextPath}/images/ex02.png">
+								</div>
+								<hr>
+								<div>
+									<h4>광고3</h4>
+									<img alt="광고이미지2" src="${pageContext.request.contextPath}/images/ex03.png">
+								</div>
+								<hr>
 							</div>
 						</div>
 					</form>
@@ -127,5 +190,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
 </html>

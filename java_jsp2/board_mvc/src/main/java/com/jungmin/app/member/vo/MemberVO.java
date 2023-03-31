@@ -3,6 +3,7 @@ package com.jungmin.app.member.vo;
 // Âü°í¿ë
 // memberId VARCHAR2(1000) PRIMARY KEY,
 // memberPw VARCHAR2(1000),
+// memberName VARCHAR2(1000),
 // memberAge NUMBER(3),
 // memberGender VARCHAR2(1000),
 // memberEmail VARCHAR2(1000),
@@ -14,6 +15,7 @@ package com.jungmin.app.member.vo;
 public class MemberVO {
 	private String memberId;
 	private String memberPw;
+	private String memberName;
 	private int memberAge;
 	private String memberGender;
 	private String memberEmail;
@@ -40,6 +42,14 @@ public class MemberVO {
 
 	public void setMemberPw(String memberPw) {
 		this.memberPw = memberPw;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 	public int getMemberAge() {
