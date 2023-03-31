@@ -26,6 +26,6 @@
 	
 	<!-- 매퍼 파일을 지정하는 요소. mapper 태그들을 포함함 -->
 	<mappers>
-		<mapper resource="com/jungmin/app/mybatis/sql/member.xml"/>
+		<mapper resource="./com/jungmin/app/mybatis/sql/member.xml"/>
 	</mappers>
 </configuration>

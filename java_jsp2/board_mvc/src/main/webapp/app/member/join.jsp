@@ -17,7 +17,7 @@
 		<!-- Wrapper -->
 		<div class="wrapper">
 			<div class="inner">
-				<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"></jsp:include>
+				<jsp:include page="/app/fix/header.jsp"></jsp:include>
 			</div>
 		</div>
 		
