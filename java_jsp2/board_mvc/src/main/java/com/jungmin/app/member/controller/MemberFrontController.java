@@ -45,6 +45,9 @@ public class MemberFrontController extends HttpServlet{
 					System.out.println("아이디 중복검사 오류 " + e);
 				}
 				break;
+			case "/member/MemberJoinOk.me":
+				
+				break;
 			default:
 				break;
 		}

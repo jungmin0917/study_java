@@ -1,0 +1,76 @@
+@charset "EUC-KR";
+
+.join_form{
+	width: 100%;	
+}
+
+.join_subwrap{
+	display: flex;
+	justify-content: space-around;
+}
+
+.join_subwrap .join_left{
+	width: 40%;
+}
+
+.join_subwrap .join_left > p{
+	background-color: #fd3a3a2e;
+    display: flex;
+    align-items: center;
+}
+
+.join_subwrap .join_left p span{
+	 color: red;
+	 font-size: 2rem;
+	 font-weight: bold;
+}
+
+.join_subwrap #idCheck_text{
+	font-size: 0.7em;
+}
+
+.join_subwrap .join_right{
+	width: 40%;
+}
+
+.join_subwrap .p_down{
+	width: 100%;
+}
+
+.join_subwrap .p_down p{
+	margin: 0;
+}
+
+.join_left .name_age_wrap{
+	display: flex;
+	justify-content: space-between;
+}
+
+.join_left .name_age_wrap > div{
+	width: 48%;	
+}
+
+.join_left .name_age_wrap p{
+	margin: 0;
+}
+
+.join_left .join_term{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 6%;
+	margin-bottom: 6%;
+}
+
+.join_left .join_term label{
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.join_left .join_term_text{
+	display: flex;
+	justify-content: space-between;
+}
+
+.join_left .join_term_text textarea{
+	display: none;
+}
