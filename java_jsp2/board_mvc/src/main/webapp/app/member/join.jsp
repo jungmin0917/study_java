@@ -6,10 +6,36 @@
 <head>
 	<meta charset="UTF-8">
 	<%-- pageContext.request.contextPath는 웹 어플리케이션의 루트 경로이다. 그걸 기준으로 상대경로로 진행하면 된다 --%>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css.main.css">
+	<%-- 나의 경우에는, /webapp 여기가 루트 경로이다. --%>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
 	<title>회원가입</title>
 </head>
-<body>
-	asdf
+<body class="is-preload">
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+	<!-- 일단은 시맨틱적인 요소 고려하지 않고 div 위주로 하겠음 -->
+		<!-- Wrapper -->
+		<div class="wrapper">
+			<div class="inner">
+				<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"></jsp:include>
+			</div>
+		</div>
+		
+		<!-- Wrapper -->
+		<div class="wrapper">
+			<div class="inner">
+				<!-- Main -->
+				<section class="main">
+					<a href="javascript:;" class="image main"><img src="${pageContext.request.contextPath}/images/join01.png"></a> <%-- 광고 넣을 부분 --%>
+					
+					<h1>회원가입</h1>
+					<p>
+						환영합니다 고객님<br>
+						회원가입 후 정상적인 서비스를 이용하실 수 있습니다.
+					</p>
+				</section>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
