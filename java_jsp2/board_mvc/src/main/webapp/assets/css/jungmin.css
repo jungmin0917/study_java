@@ -72,8 +72,9 @@
 	justify-content: space-between;
 }
 
-.join_left .join_term_text textarea{
+.join_left textarea.term_textarea{
 	display: none;
+	margin-bottom: 5%;
 }
 
 .join_left p.join_options{
@@ -95,4 +96,8 @@
 .join_left .join_buttons ul{
 	display: flex;
 	justify-content: center;
+}
+
+.join_right div img{
+	width: 100%;
 }

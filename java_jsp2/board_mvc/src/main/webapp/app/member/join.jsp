@@ -83,24 +83,21 @@
 												<input type="checkbox" id="term1" name="term1" class="terms">
 												<label for="term1">서비스 이용약관</label>
 											</div>
-											<div>
-												<a href="term1-content">펼쳐보기</a>
+											<div class="term-detail">
+												<a href="javascript:;" data-href="term1-content">펼쳐보기</a>
 											</div>
-											
-											<textarea name="term1-content" id="term1-content" rows="3"></textarea>
 										</div>
+										<textarea name="term1-content" id="term1-content" rows="3" class="term_textarea"></textarea>
 										<div class="col-12 join_term_text">
 											<div>
 												<input type="checkbox" id="term2" name="term2" class="terms">
 												<label for="term2">개인정보 수집 및 이용</label>
 											</div>
-											<div>
-												<a href="term2-content">펼쳐보기</a>
+											<div class="term-detail">
+												<a href="javascript:;" data-href="term2-content">펼쳐보기</a>
 											</div>
-											
-											<textarea name="term2-content" id="term2-content" rows="3"></textarea>
 										</div>
-										
+										<textarea name="term2-content" id="term2-content" rows="3" class="term_textarea"></textarea>
 										<br>
 										
 									</div>
@@ -147,7 +144,7 @@
 									<div class="col-12 join_buttons">
 										<ul class="actions">
 											<li>
-												<input type="button" class="primary" onclick="" value="완료">
+												<input type="button" class="primary" onclick="formSubmit()" value="완료">
 											</li>
 											<li>
 												<input type="button" class="primary" onclick="history.back()" value="취소">
@@ -190,6 +187,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+
+<%-- jsp 파일이라 script 내부에서 EL문 사용 가능 --%>
+<script type="text/javascript">
+	var contextPath = "${pageContext.request.contextPath}";
+</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/app/member/join.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
