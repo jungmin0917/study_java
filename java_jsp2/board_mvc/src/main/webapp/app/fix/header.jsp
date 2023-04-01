@@ -20,17 +20,17 @@
 <nav id="menu">
 	<ul class="actions stacked">
 		<li>
-			<a href="javascript:;">회원가입</a>
+			<a href="${pageContext.request.contextPath}/member/MemberJoin.me">회원가입</a>
 		</li>
 		<c:choose>
 			<c:when test="${session_id eq null}">
 				<li>
-					<a href="javascript:;">로그인</a>
+					<a href="${pageContext.request.contextPath}/member/MemberLogin.me">로그인</a>
 				</li>
 			</c:when>
 			<c:otherwise>
 				<li>
-					<a href="javascript:;">로그아웃</a>
+					<a href="${pageContext.request.contextPath}/member/MemberLogout.me">로그아웃</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
