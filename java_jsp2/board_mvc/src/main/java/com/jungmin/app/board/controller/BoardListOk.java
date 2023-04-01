@@ -25,17 +25,53 @@ public class BoardListOk implements Action {
 		// null이면 1페이지, 아니면 integer로 파싱
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		
-		// 페이징 크기 (한 페이지에 몇 개)
-		int pageSize = 10;
+		// 한 페이지에 몇 개인지
+		int rowSize = 10;
+		
+		// 전체 몇 개가 있는지
+		int totalCount = dao.getTotal();
 		
 		// 페이지 사이즈를 통해 startRow, endRow 구하기
 		int startRow;
 		int endRow;
+
+		endRow = page * rowSize;
+		startRow = endRow - rowSize + 1;
 		
-		startRow = page * pageSize - 1;
-		endRow = startRow + pageSize;
+		// 페이지 구간 (1 ~ 10페이지, 11 ~ 20페이지...)
+		int pageSize = 10; // 페이지 구간 사이즈
+		// 해당 페이지의 시작 구간
+		int startPage = ((page - 1) / pageSize) * pageSize + 1;
+		// 해당 페이지의 끝 구간
+		int endPage = startPage + pageSize - 1;
+		
+		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
+		
+		if(endPage > realEndPage) {
+			endPage = realEndPage;
+		}
+		
+		req.setAttribute("totalCount", totalCount);
+		req.setAttribute("realEndPage", realEndPage);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		req.setAttribute("nowPage", page);
+		req.setAttribute("boardList", dao.getList(startRow, endRow));
+		
+		forward.setRedirect(false);
+		// setRedirect가 false이므로 굳이 contextPath 안 넣어도 됨)
+		forward.setPath("/app/board/boardList.jsp");
+		
 		
 		return null;
 	}
 
 }
+
+
+
+
+
+
+
+
