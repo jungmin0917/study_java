@@ -17,7 +17,7 @@
 <!-- ); -->
 
 	<!-- parameterType은 int로 함으로써 (페이지) -->
-	<select id="getlist" parameterType="int" resultType="List">
+	<select id="getList" parameterType="Map" resultType="board"> <!-- 주의!! resultType은 List가 아니고 board가 나와야 함 (SqlSession.selectList는 result를 하나하나 받아 List에 추가하는 식으로 구현된다) -->
 	<!-- 부등호가 들어가므로 CDATA로 묶어줘야 함 -->
 	<![CDATA[
 		SELECT * FROM
