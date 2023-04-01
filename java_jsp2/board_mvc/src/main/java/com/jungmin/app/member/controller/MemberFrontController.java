@@ -73,6 +73,13 @@ public class MemberFrontController extends HttpServlet{
 				forward.setRedirect(false);
 				forward.setPath("/app/member/join.jsp");
 				break;
+			case "/member/MemberLogoutOk.me":
+				try {
+					forward = new MemberLogoutOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("로그아웃 오류 " + e);
+				}
+				break;
 			default:
 				break;
 		}
