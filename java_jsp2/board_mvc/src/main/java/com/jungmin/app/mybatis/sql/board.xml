@@ -32,7 +32,7 @@
 	
 	
 	<select id="getTotal" resultType="_int">
-		SELECT COUNT(BOARDNUM) FROM JUNGMIN_BOARD;
+		SELECT COUNT(BOARDNUM) FROM JUNGMIN_BOARD
 	</select>
 	
 </mapper>

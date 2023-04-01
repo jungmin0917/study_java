@@ -33,7 +33,7 @@ public class MemberLoginOk implements Action {
 		if(dao.login(memberId, memberPw)){
 			// 로그인 성공 시
 			session.setAttribute("sessionId", memberId); // memberId로 세션 생성
-			forward.setPath(req.getContextPath() + "/board/BoardList.bo"); // 게시판으로 가기
+			forward.setPath(req.getContextPath() + "/board/BoardListOk.bo"); // 게시판으로 가기
 		}else {
 			forward.setPath(req.getContextPath() + "/member/MemberLogin.me?code=fail");
 		}

@@ -37,7 +37,11 @@ public class BoardFrontController extends HttpServlet{
 
 		switch(command) {
 			case "/board/BoardListOk.bo":
-				
+				try {
+					forward = new BoardListOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("게시판 읽기 오류 : " + e);
+				}
 				break;
 			default:
 				break;
