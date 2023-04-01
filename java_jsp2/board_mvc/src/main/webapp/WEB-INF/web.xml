@@ -16,10 +16,20 @@
   	<servlet-class>com.jungmin.app.member.controller.MemberFrontController</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>BoardFrontController</servlet-name>
+  	<servlet-class>com.jungmin.app.board.controller.BoardFrontController</servlet-class>
+  </servlet>
+  
   <!-- 어떤 url 패턴에 의해 어떤 서블릿으로 가게 할 지 정함 -->
   <!-- 사용자가 요청한 URI가 .me로 끝나면 MemberFrontController로 가게 함 -->
   <servlet-mapping>
   	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.me</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>BoardFrontController</servlet-name>
+  	<url-pattern>*.bo</url-pattern>
   </servlet-mapping>
 </web-app>
