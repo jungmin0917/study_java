@@ -51,7 +51,11 @@ public class BoardFrontController extends HttpServlet{
 				forward.setRedirect(false);
 				break;
 			case "/board/BoardWriteOk.bo":
-				
+				try {
+					forward = new BoardWriteOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("글쓰기 오류 : " + e);
+				}
 				break;
 			default:
 				break;

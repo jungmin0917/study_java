@@ -7,6 +7,7 @@ import com.jungmin.app.action.Action;
 import com.jungmin.app.action.ActionForward;
 import com.jungmin.app.board.dao.BoardDAO;
 import com.jungmin.app.board.vo.BoardVO;
+import com.jungmin.app.files.dao.FilesDAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -17,11 +18,10 @@ public class BoardWriteOk implements Action {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		ActionForward forward = null;
+		ActionForward forward = new ActionForward();
 		
 		// 여기서 받은 requst.parameter로 BoardVO 객체 생성해주고 DAO의 insertBoard() 메서드 사용
 		
-		// MemberDAO도 써야 함 (input hidden으로 sessionId 적었는데 없는 회원일 수도 있어서?)
 		BoardDAO boardDao = new BoardDAO();
 		BoardVO board = new BoardVO();
 		
@@ -47,6 +47,17 @@ public class BoardWriteOk implements Action {
 		// 이제 첨부파일을 추가하자 (일단 파일 관련 DB 테이블을 만들자)
 		
 		boardDao.insertBoard(board);
+		// 여기까지가 board 테이블에 등록 완료
+		
+		// 파일도 추가할 것
+		FilesDAO fileDao = new FilesDAO();
+		
+		// insertFile할 때 boardNum이 필요하므로, 위에서 넣은 것을 가져올 것
+		fileDao.insertFile(multi, boardDao.getSeq());
+		
+		// 파일 업로드까지 완료했으면 게시글 목록 페이지로 이동시키기
+		forward.setRedirect(true);
+		forward.setPath(req.getContextPath() + "/board/BoardListOk.bo");
 		
 		return forward;
 	}

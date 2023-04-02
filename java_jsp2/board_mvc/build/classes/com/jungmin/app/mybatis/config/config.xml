@@ -10,6 +10,7 @@
 	<typeAliases>
 		<typeAlias type="com.jungmin.app.member.vo.MemberVO" alias="member"/>
 		<typeAlias type="com.jungmin.app.board.vo.BoardVO" alias="board"/>
+		<typeAlias type="com.jungmin.app.files.vo.FilesVO" alias="files"/>
 	</typeAliases>
 
 	<environments default="development"> <!-- MyBatis가 실행될 환경을 설정함. default 속성은 기본 환경을 지정하며, development 태그는 id 속성으로 구분된 환경 설정을 정의함. -->
@@ -29,5 +30,6 @@
 	<mappers>
 		<mapper resource="./com/jungmin/app/mybatis/sql/member.xml"/>
 		<mapper resource="./com/jungmin/app/mybatis/sql/board.xml"/>
+		<mapper resource="./com/jungmin/app/mybatis/sql/files.xml"/>
 	</mappers>
 </configuration>

@@ -43,4 +43,9 @@
 		VALUES (SEQ_BOARD.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardMemberId})
 	</insert>
 	
+	<!-- 아래에서 DUAL은 SEQ_BOARD.CURRVAL을 가져오기 위한 가상 테이블임 -->
+	<select id="getSeq" resultType="_int">
+		SELECT SEQ_BOARD.CURRVAL FROM DUAL
+	</select>
+	
 </mapper>
