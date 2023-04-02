@@ -182,6 +182,13 @@
 		}
 	});
 	
+	// 파일 업로드 취소
+	function cancelFile(fileId){
+		// 템플릿 리터럴은 웬만한 모던 브라우저에서 다 지원함
+		$("input[name='" + fileId + "]'").val(""); // 일단 해당 input value 비워줌
+		$("img#" + fileId + "Img").attr("src", "${pageContext.request.contextPath}/images/filePlus.png");
+	}
+	
 </script>
 </html>
 

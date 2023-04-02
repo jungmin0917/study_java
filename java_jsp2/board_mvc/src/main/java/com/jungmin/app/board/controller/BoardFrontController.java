@@ -50,6 +50,9 @@ public class BoardFrontController extends HttpServlet{
 				forward.setPath("/app/board/boardWrite.jsp");
 				forward.setRedirect(false);
 				break;
+			case "/board/BoardWriteOk.bo":
+				
+				break;
 			default:
 				break;
 		}

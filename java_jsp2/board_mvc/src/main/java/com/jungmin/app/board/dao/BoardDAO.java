@@ -35,5 +35,10 @@ public class BoardDAO {
 		return total;
 	}
 	
-	
+	// 게시글 작성
+	public boolean insertBoard(BoardVO board) {
+		int result = sqlSession.insert("Board.insertBoard", board);
+		
+		return result == 1 ? true : false;
+	}
 }
