@@ -60,8 +60,8 @@
 						<div class="table-wrapper">
 							<div style="display:flex; justify-content:space-between;">
 								<span>글 개수 : ${totalCount}개</span>
-								<%-- 글쓰기 버튼 --%>
-								<button style="border-radius:0;" onclick="location.href='${pageContext.request.contextPath}/board/BoardWrite.bo'">글 쓰기</button>
+								<%-- 글쓰기 버튼 (그냥 글쓰는 페이지로 이동이기 때문에 Ok가 안 붙음. Ok는 글쓰기 완료 시 사용할 부분임) --%>					
+								<button style="border-radius:0;" onclick="location.href='${pageContext.request.contextPath}/board/BoardWrite.bo'">글쓰기</button>
 							</div>
 							<table>
 								<caption style="text-align:left; margin-bottom:3%;">

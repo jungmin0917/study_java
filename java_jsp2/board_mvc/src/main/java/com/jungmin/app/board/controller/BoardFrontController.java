@@ -43,6 +43,13 @@ public class BoardFrontController extends HttpServlet{
 					System.out.println("게시판 읽기 오류 : " + e);
 				}
 				break;
+			// 단순 이동
+			case "/board/BoardWrite.bo":
+				// 단순 이동이기에 여기서 액션 포워드 객체 처리
+				forward = new ActionForward();
+				forward.setPath("/app/board/boardWrite.jsp");
+				forward.setRedirect(false);
+				break;
 			default:
 				break;
 		}
