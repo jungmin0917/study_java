@@ -62,7 +62,7 @@ public class BoardListOk implements Action {
 		// setRedirect가 false이므로 굳이 contextPath 안 넣어도 됨)
 		forward.setPath("/app/board/boardList.jsp");
 		
-		return null;
+		return forward; // 주의!! null을 리턴하면 안 됨!!
 	}
 
 }
