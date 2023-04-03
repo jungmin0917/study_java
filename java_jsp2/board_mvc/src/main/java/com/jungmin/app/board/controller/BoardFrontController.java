@@ -78,6 +78,13 @@ public class BoardFrontController extends HttpServlet{
 					System.out.println("게시글 삭제 오류 : " + e);
 				}
 				break;
+			case "/board/BoardModify.bo":
+				// 글쓰기 페이지(수정)로 단순 이동 (단순 이동이기에 여기서 처리)
+				// 근데 DB 조회는 해야 됨 (수정이니까)
+				forward = new ActionForward();
+				forward.setPath("/app/board/boardWrite.jsp?boardNum=");
+				forward.setRedirect(false);
+				break;
 			default:
 				break;
 		}

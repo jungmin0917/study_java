@@ -31,21 +31,18 @@ public class BoardDAO {
 	// 게시글 전체 개수
 	public int getTotal() {
 		int total = sqlSession.selectOne("Board.getTotal");
-		
 		return total;
 	}
 	
 	// 게시글 작성
 	public boolean insertBoard(BoardVO board) {
 		int result = sqlSession.insert("Board.insertBoard", board);
-		
 		return result == 1 ? true : false;
 	}
 	
 	// 최근 시퀀스(게시글 번호) 가져오기
 	public int getSeq() {
 		int seq = sqlSession.selectOne("Board.getSeq");
-		
 		return seq;
 	}
 	
