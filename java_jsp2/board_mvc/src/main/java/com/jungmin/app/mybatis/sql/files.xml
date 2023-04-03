@@ -15,4 +15,11 @@
 		VALUES (#{fileName}, #{boardNum}, #{fileNameOriginal})
 	</insert>
 	
+	<!-- 게시글 파일 가져오기 -->
+	<select id="getFiles" parameterType="int" resultType="files">
+		SELECT FILENAME, BOARDNUM, FILENAMEORIGINAL
+		FROM JUNGMIN_FILES
+		WHERE boardNum = #{boardNum}
+	</select>
+	
 </mapper>

@@ -10,9 +10,9 @@ package com.jungmin.app.files.vo;
 //);
 
 public class FilesVO {
-	private String fileName;
-	private int boardNum;
-	private String fileNameOriginal;
+	private String fileName; // 정책상 변경된 파일명 (이름 중복 등)
+	private int boardNum; // 어떤 게시글의 파일인지
+	private String fileNameOriginal; // 원래 파일명
 	
 	// 기본 생성자
 	public FilesVO() {;}

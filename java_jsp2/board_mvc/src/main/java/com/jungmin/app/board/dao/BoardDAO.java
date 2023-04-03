@@ -48,4 +48,14 @@ public class BoardDAO {
 		
 		return seq;
 	}
+	
+	// 게시글 상세 보기
+	public BoardVO getDetail(int boardNum) {
+		return sqlSession.selectOne("Board.getDetail", boardNum);
+	}
+	
+	// 게시글 조회수 증가
+	public void updateReadCount(int boardNum) {
+		sqlSession.update("Board.updateReadCount", boardNum);
+	}
 }

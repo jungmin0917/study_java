@@ -1,6 +1,7 @@
 package com.jungmin.app.files.dao;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -45,6 +46,10 @@ public class FilesDAO {
 
 			sqlSession.insert("Files.insertFile", vo);
 		}
-		
+	}
+	
+	// 게시글 첨부 파일 가져오기 (최대 3개이므로 List로 받는다). 주의: ArrayList가 아니고 selectList의 반환 타입은 List임
+	public List<FilesVO> getFiles(int boardNum){
+		return sqlSession.selectList("Files.getFiles", boardNum);
 	}
 }

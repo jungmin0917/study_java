@@ -48,4 +48,17 @@
 		SELECT SEQ_BOARD.CURRVAL FROM DUAL
 	</select>
 	
+	<!-- 글 상세 보기 -->
+	<select id="getDetail" parameterType="int" resultType="board">
+		SELECT BOARDNUM, BOARDTITLE, BOARDCONTENT, BOARDMEMBERID, BOARDDATE, READCOUNT
+		FROM JUNGMIN_BOARD
+		WHERE boardNum = #{boardNum}
+	</select>
+	
+	<update id="updateReadCount" parameterType="int">
+		UPDATE JUNGMIN_BOARD
+		SET readCount = readCount + 1
+		WHERE boardNum = #{boardNum}
+	</update>
+	
 </mapper>
