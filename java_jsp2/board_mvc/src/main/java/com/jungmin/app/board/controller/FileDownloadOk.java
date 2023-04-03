@@ -26,7 +26,7 @@ public class FileDownloadOk implements Action {
 		ActionForward forward = new ActionForward();
 		
 		// 업로드 되어있는 경로 (서버인데 현재는 로컬임) 설정
-		String saveFolder = "D:\\JAVA19_hjm\\git\\study_java\\java_jsp2\\board_mvc\\src\\main\\webapp\\app\\upload";
+		String saveFolder = "C:\\Users\\jungmin\\Desktop\\eclipse_workspace\\study_java\\java_jsp2\\board_mvc\\src\\main\\webapp\\app\\upload";
 		// GET 쿼리스트링으로 fileName 전달 받았음
 		String fileName = req.getParameter("fileName");
 		

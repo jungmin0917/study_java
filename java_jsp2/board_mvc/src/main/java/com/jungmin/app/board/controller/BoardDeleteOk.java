@@ -24,7 +24,7 @@ public class BoardDeleteOk implements Action {
 		// 이 과정에서 File 객체의 delete 메소드를 사용할 것임
 		
 		// 업로드 저장소 위치
-		String saveFolder = "D:\\JAVA19_hjm\\git\\study_java\\java_jsp2\\board_mvc\\src\\main\\webapp\\app\\upload";
+		String saveFolder = "C:\\Users\\jungmin\\Desktop\\eclipse_workspace\\study_java\\java_jsp2\\board_mvc\\src\\main\\webapp\\app\\upload";
 		
 		FilesDAO filesDao = new FilesDAO();
 		BoardDAO boardDao = new BoardDAO();

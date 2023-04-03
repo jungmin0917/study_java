@@ -30,7 +30,7 @@ public class BoardWriteOk implements Action {
 		
 		MultipartRequest multi = null;
 
-		String saveFolder = "D:\\JAVA19_hjm\\git\\study_java\\java_jsp2\\board_mvc\\src\\main\\webapp\\app\\upload"; // 로컬 업로드 파일 디렉터리 위치
+		String saveFolder = "C:\\Users\\jungmin\\Desktop\\eclipse_workspace\\study_java\\java_jsp2\\board_mvc\\src\\main\\webapp\\app\\upload"; // 로컬 업로드 파일 디렉터리 위치
 		
 		int megaByte = 1024 * 1024;
 		int fileSize = megaByte * 5; // 5MB
