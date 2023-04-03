@@ -92,13 +92,18 @@
 							첨부파일
 						</div>
 						<c:forEach var="file" items="${files}">
-							<a href="${pageContext.request.contextPath}/board/FileDownload.bo?file_name=${file.getFileName()}"><c:out value="${file.getFileNameOriginal()}"/></a>
+							<a href="${pageContext.request.contextPath}/board/FileDownloadOk.bo?fileName=${file.getFileName()}"><c:out value="${file.getFileName()}"/></a>
 							<br>
 						</c:forEach>
 					</c:if>
 					<hr />
 					<%-- 내용 보여줄 때는 웬만하면 pre 태그로 사용하기 (여백, 줄바꿈 등이 DB 내용 그대로 출력됨) --%>
 					<h3><pre>${board.getBoardContent()}</pre></h3>
+					
+					<%-- 이건 내가 추가한 건데, 혹시 (이미지)파일 있으면 출력하기 --%>
+					<c:forEach var="file" items="${files}">
+						<img alt="${file.getFileName()}" src="${pageContext.request.contextPath}/app/upload/${file.getFileName()}">
+					</c:forEach>
 				</section>
 			</div>
 		</div>

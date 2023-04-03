@@ -64,6 +64,13 @@ public class BoardFrontController extends HttpServlet{
 					System.out.println("글보기 오류 : " + e);
 				}
 				break;
+			case "/board/FileDownloadOk.bo":
+				try {
+					forward = new FileDownloadOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("파일 다운로드 오류 : " + e);
+				}
+				break;
 			default:
 				break;
 		}

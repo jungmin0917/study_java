@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Files">
+
+	<!-- 	참고용 -->
+	<!-- 	INSERT INTO JUNGMIN_FILES -->
+	<!-- (FILENAME, BOARDNUM, FILENAMEORIGINAL) -->
+	<!-- VALUES('', 0, ''); -->
+	
+	<!-- 절대 xml에 세미콜론 쓰지 말 것!!! -->
+	<insert id="insertFile" parameterType="files">
+		INSERT INTO JUNGMIN_FILES
+		(FILENAME, BOARDNUM, FILENAMEORIGINAL)
+		VALUES (#{fileName}, #{boardNum}, #{fileNameOriginal})
+	</insert>
+	
+	<!-- 게시글 파일 가져오기 -->
+	<select id="getFiles" parameterType="int" resultType="files">
+		SELECT FILENAME, BOARDNUM, FILENAMEORIGINAL
+		FROM JUNGMIN_FILES
+		WHERE boardNum = #{boardNum}
+	</select>
+	
+</mapper>
