@@ -58,4 +58,8 @@ public class BoardDAO {
 	public void updateReadCount(int boardNum) {
 		sqlSession.update("Board.updateReadCount", boardNum);
 	}
+	
+	public void deleteBoard(int boardNum) {
+		sqlSession.delete("Board.deleteBoard", boardNum);
+	}
 }

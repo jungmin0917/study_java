@@ -130,7 +130,8 @@
 									</c:forEach>
 									
 									<%-- 다음 버튼 --%>
-									<c:if test="${nowPage != realEndPage}">
+									<%-- !=로 비교하면 안 됨 (기본적으로 문자열 타입으로 넘어옴) --%>
+									<c:if test="${nowPage < realEndPage}">
 										<a href="${pageContext.request.contextPath}/board/BoardListOk.bo?page=${nowPage+1}">&gt;</a>
 									</c:if>
 									</td>

@@ -22,4 +22,10 @@
 		WHERE boardNum = #{boardNum}
 	</select>
 	
+	<!-- 게시글 삭제 시 관련 파일 지우기 -->
+	<delete id="deleteFiles" parameterType="int">
+		DELETE FROM JUNGMIN_FILES
+		WHERE boardNum = #{boardNum}
+	</delete>
+	
 </mapper>

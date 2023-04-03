@@ -47,6 +47,10 @@ public class BoardListOk implements Action {
 		
 		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
 		
+		if(realEndPage < 1) {
+			realEndPage = 1;
+		}
+		
 		if(endPage > realEndPage) {
 			endPage = realEndPage;
 		}

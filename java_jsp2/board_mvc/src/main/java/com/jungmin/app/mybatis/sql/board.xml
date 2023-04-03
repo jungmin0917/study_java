@@ -61,4 +61,9 @@
 		WHERE boardNum = #{boardNum}
 	</update>
 	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM JUNGMIN_BOARD
+		WHERE boardNum = #{boardNum}
+	</delete>
+	
 </mapper>

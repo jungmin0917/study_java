@@ -52,4 +52,11 @@ public class FilesDAO {
 	public List<FilesVO> getFiles(int boardNum){
 		return sqlSession.selectList("Files.getFiles", boardNum);
 	}
+	
+	// 게시글에 포함된 파일 삭제하기
+	public void deleteFiles(int boardNum) {
+		sqlSession.delete("Files.deleteFiles", boardNum);
+	}
+	
+	
 }
