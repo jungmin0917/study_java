@@ -81,8 +81,16 @@ public class MemberFrontController extends HttpServlet{
 				}
 				break;
 			case "/member/MemberFindIdOk.me":
-				
-				
+				try {
+					forward = new MemberFindIdOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("아이디 찾기 오류 " + e);
+				}
+				break;
+			case "/member/MemberFindId.me":
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath("/app/member/findId.jsp");
 				break;
 			default:
 				break;

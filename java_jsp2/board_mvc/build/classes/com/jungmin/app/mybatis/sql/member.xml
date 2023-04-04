@@ -38,7 +38,7 @@
 		WHERE memberId = #{memberId} AND memberPw = #{memberPw}
 	</select>
 	
-	<select id="findId" parameterType="Map" resultType="member">
+	<select id="findId" parameterType="Map" resultType="String">
 		SELECT memberId FROM JUNGMIN_MEMBER
 		WHERE memberEmail = #{memberEmail} AND memberPw = #{memberPw}
 	</select>

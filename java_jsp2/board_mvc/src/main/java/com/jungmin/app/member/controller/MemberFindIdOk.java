@@ -21,9 +21,13 @@ public class MemberFindIdOk implements Action {
 		String memberEmail = req.getParameter("memberEmail");
 		String memberPw = req.getParameter("memberPw");
 		
+		// forward로 갈 거니까 request 객체에 memberId를 담아서 이동한다
+		req.setAttribute("memberId", memberDao.findId(memberEmail, memberPw));
 		
+		forward.setRedirect(false);
+		forward.setPath("/app/member/showId.jsp");
 		
-		return null;
+		return forward;
 	}
 
 }
