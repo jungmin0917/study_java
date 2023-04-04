@@ -20,4 +20,9 @@ public class BoardReplyDAO {
 	public List<BoardReplyVO> getReplyList(int boardNum) {
 		return sqlSession.selectList("Board.getReplyList", boardNum);
 	}
+	
+	// 댓글 작성하기
+	public void insertReply(BoardReplyVO reply) {
+		sqlSession.insert("Board.insertReply", reply);
+	}
 }

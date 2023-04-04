@@ -102,6 +102,13 @@ public class BoardFrontController extends HttpServlet{
 					System.out.println("댓글 목록 오류 : " + e);
 				}
 				break;
+			case "/board/BoardReplyWriteOk.bo":
+				try {
+					forward = new BoardReplyWriteOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("댓글 작성 오류 : " + e);
+				}
+				break;
 			default:
 				break;
 		}

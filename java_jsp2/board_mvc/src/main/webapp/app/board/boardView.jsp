@@ -118,7 +118,7 @@
 					</header>
 					
 					<%-- ajax로 처리하려고 action 부분이 비어있다 --%>
-					<form method="post" action="#" class="combined" style="width:auto;">
+					<form id="replyContent" method="post" action="#" class="combined" style="width:auto;">
 						<textarea name="content" id="content" placeholder="비속어를 사용하지 말아주세요." class="invert" rows="5" style="border-radius:0; resize:none;"></textarea>
 						<input id="register" type="button" class="primary" value="등록" onclick="comment()"/>
 					</form>
@@ -183,7 +183,7 @@
 				// 수정, 삭제 버튼 출력할 건데, sessionId와 동일한지 확인
 				// 각각 수정, 수정완료, 삭제 버튼 만들어줄 것이다.
 				if("${sessionId}" == reply.memberId){
-					text += "<input type='button' id='ready" + (index + 1) + "' class='primary' onclick='' value='수정'>";
+					text += "<input type='button' id='ready" + (index + 1) + "' class='primary' onclick='readyToUpdate(" + (index + 1) + ")' value='수정'>";
 					text += "<input type='button' id='ok" + (index + 1) + "' class='primary' style='display:none' onclick='' value='수정완료'>";
 					text += "<input type='button' id='remove" + (index + 1) + "' class='primary' onclick='' value='삭제'>";
 				}
@@ -195,6 +195,42 @@
 		}
 
 		$("#replies").html(text);
+	}
+	
+	function comment(){
+		let memberId = "${sessionId}";
+		let replyContent = $("#replyContent textarea").val();
+		
+		if(!replyContent || replyContent.trim() == ''){
+			alert("댓글 내용을 입력해주세요");
+			return;
+		}
+		
+		$.ajax({
+			url: pageContext + "/board/BoardReplyWriteOk.bo",
+			type: "POST",
+			data: {
+				"boardNum": boardNum,
+				"memberId": memberId,
+				"replyContent": replyContent,
+			},
+			success: function(res){
+				// 새로 달린 댓글 표시해줘야 함 (보통 다른 사람이 그 사이에 달 수 있으니 리로드 형식으로 한다)
+				// 댓글 부분 비워줌
+				$("#replyContent textarea").val("");
+				
+				// 댓글 부분 다시 리로드
+				getList(); // 여기서 showList까지 함으로써 댓글 부분이 리로드된다.
+				// 그래서 따로따로 구현했구나...
+			},
+			error: function(err){
+				console.error(err);
+			}
+		});
+	}
+	
+	function readyToUpdate(index){
+		
 	}
 </script>
 

@@ -90,4 +90,10 @@
 		ORDER BY replyNum DESC
 	</select>
 	
+	<insert id="insertReply" parameterType="reply">
+		INSERT INTO JUNGMIN_REPLY
+		(REPLYNUM, BOARDNUM, MEMBERID, REPLYCONTENT)
+		VALUES (SEQ_REPLY.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})
+	</insert>
+	
 </mapper>
