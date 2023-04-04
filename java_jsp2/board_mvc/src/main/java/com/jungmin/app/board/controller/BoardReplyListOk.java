@@ -14,7 +14,7 @@ import com.jungmin.app.action.ActionForward;
 import com.jungmin.app.board.dao.BoardReplyDAO;
 import com.jungmin.app.board.vo.BoardReplyVO;
 
-public class BoardReplyList implements Action {
+public class BoardReplyListOk implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {

@@ -96,7 +96,11 @@ public class BoardFrontController extends HttpServlet{
 				
 			// ****************** ´ñ±Û *******************
 			case "/board/BoardReplyList.bo":
-				
+				try {
+					forward = new BoardReplyListOk().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println("´ñ±Û ¸ñ·Ï ¿À·ù : " + e);
+				}
 				break;
 			default:
 				break;

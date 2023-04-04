@@ -140,13 +140,61 @@
 <%-- 댓글 관련 스크립트 작성 --%>
 <script type="text/javascript">
 	<%-- DOM 로딩 완료 후 실행 --%>
-	$(document).ready(function){
+	$(document).ready(function(){
 		getList();
 	});
 	
+	let pageContext = "${pageContext.request.contextPath}";
+	let boardNum = "${param.boardNum}";
+	
 	<%-- 댓글 목록 가져오는 ajax --%>
 	function getList(){
+		$.ajax({
+			url: pageContext + "/board/BoardReplyList.bo",
+			type: "GET",
+			data: {
+				// 여기서 boardNum을 넘겨야 함
+				"boardNum": boardNum,
+			},
+			dataType: "JSON",
+			success: function(res){
+				// 여기서 바로 HTML을 만드는 것보다, 여기서 또 모듈화를 한다.
+				showList(res);
+			},
+			error: function(err){
+				console.error(err);
+			}
+		});
+	}
+	
+	function showList(replies){ // JSON 형태의 값이 매개변수로 담긴다
+		let text = ""; // 댓글 보여줄 HTML 작성
 		
+		if(replies != null && replies.length != 0){
+			
+			// iterable한 객체에 대하여 $.each를 적용함으로써 순회하면서 익명함수 적용
+			$.each(replies, function(index, reply){
+				text += "<div id='reply'>";
+					text += "<p class='writer'>" + reply.memberId + "</p>";
+					text += "<div class='content' id='" + (index + 1) + "' style='width:100%'>";
+					text += "<pre>" + reply.replyContent + "</pre>";
+					text += "</div>"
+				
+				// 수정, 삭제 버튼 출력할 건데, sessionId와 동일한지 확인
+				// 각각 수정, 수정완료, 삭제 버튼 만들어줄 것이다.
+				if("${sessionId}" == reply.memberId){
+					text += "<input type='button' id='ready" + (index + 1) + "' class='primary' onclick='' value='수정'>";
+					text += "<input type='button' id='ok" + (index + 1) + "' class='primary' style='display:none' onclick='' value='수정완료'>";
+					text += "<input type='button' id='remove" + (index + 1) + "' class='primary' onclick='' value='삭제'>";
+				}
+
+				text += "</div>";
+			});
+		}else{ // 댓글이 없을 때
+			text += "<p>댓글이 없습니다</p>";
+		}
+
+		$("#replies").html(text);
 	}
 </script>
 
