@@ -167,7 +167,14 @@
 		});
 	}
 	
+	// 댓글 수정취소 시 원댓글 내용을 갖고있어야 하기에 저장해놓는다
+	
+	let replyList;
+	
 	function showList(replies){ // JSON 형태의 값이 매개변수로 담긴다
+		
+		replyList = replies;
+		
 		let text = ""; // 댓글 보여줄 HTML 작성
 		
 		if(replies != null && replies.length != 0){
@@ -229,9 +236,61 @@
 		});
 	}
 	
+	// 현재 수정 중인 댓글이 있는지 여부
+	let modifyCheck = false;
+	
+	// 수정 버튼
 	function readyToUpdate(index){
+		// 일단 각 dom 객체 가져옴 (jQuery로)
+		let div = $("#" + index);
+		let modifyReady = $("#ready" + index);
+		let modifyOk = $("#ok" + index);
 		
+		// 삭제 버튼을 수정취소 버튼으로 바꿔서 쓸 생각임
+		let remove = $("#remove" + index);
+		
+		if(!modifyCheck){
+			// 해당 댓글 div를 textarea로 바꿔줌
+			div.replaceWith("<textarea name='replyContent' id='" + index + "' class='invert' style='border-radius:0; resize:none;'>" + div.text() + "</textarea>");
+			
+			// 삭제 버튼을 수정취소 버튼으로 바꾸기
+			remove.replaceWith("<input type='button' id='cancel" + index + "' value='취소' onclick='updateCancel(" + index + ")'>");
+			
+			modifyReady.hide();
+			modifyOk.show();
+			
+			modifyCheck = true;
+		}else{
+			alert("이미 수정 중인 댓글이 있습니다");
+			return;
+		}
 	}
+	
+	// 수정 취소 버튼
+	function updateCancel(index){
+		// 다시 수정취소 버튼을 삭제 버튼으로 바꿔야 함
+		let remove = $("#cancel" + index);
+		// textarea를 다시 div로 바꿔야 함
+		let textarea = $("#" + index);
+		// 다시 보여줄 것
+		let modifyReady = $("#ready" + index);
+		// 다시 숨길 것
+		let modifyOk = $("#ok" + index);
+		
+		modifyReady.show();
+		modifyOk.hide();
+		
+		// 수정취소 버튼을 삭제 버튼으로 되돌리기
+		remove.replaceWith("<input type='button' id='remove" + index + "' class='primary' onclick='' value='삭제'>");
+		
+		// textarea를 다시 div로 바꿔야 함
+		// 참고용 : "<div class='content' id='" + (index + 1) + "' style='width:100%'>";
+		// 취소해야 되니까 취소 전이었던 replyContent를 저장해놔야 함
+		textarea.replaceWith("<div class='content' id='" + index + "' style='width:100%'><pre>" + replyList[index - 1].replyContent + "</pre></div>");
+		
+		modifyCheck = false;
+	}
+	
 </script>
 
 </html>
