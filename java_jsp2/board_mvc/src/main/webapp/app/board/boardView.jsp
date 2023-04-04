@@ -34,6 +34,11 @@
 		width:20%;
 		font-weight:bold;
 	}
+	
+	section *{
+		max-width: 100%;
+	}
+	
 </style>
 </head>
 <body class="is-preload">

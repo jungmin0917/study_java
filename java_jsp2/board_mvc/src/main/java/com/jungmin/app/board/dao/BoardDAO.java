@@ -59,4 +59,8 @@ public class BoardDAO {
 	public void deleteBoard(int boardNum) {
 		sqlSession.delete("Board.deleteBoard", boardNum);
 	}
+	
+	public void updateBoard(BoardVO board) {
+		sqlSession.update("Board.updateBoard", board);
+	}
 }

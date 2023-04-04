@@ -51,6 +51,7 @@
   			font-weight: 600;
   			letter-spacing: 0.1em;
 	}
+	
 </style>
 </head>
 <body class="is-preload">

@@ -68,6 +68,8 @@ public class BoardModifyOk implements Action {
 		board.setBoardTitle(multi.getParameter("boardTitle"));
 		board.setBoardContent(multi.getParameter("boardContent"));
 		
+		boardDao.updateBoard(board);
+		
 		forward.setRedirect(false);
 		forward.setPath("/board/BoardViewOk.bo?boardNum=" + boardNum);
 		
