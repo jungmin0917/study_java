@@ -10,6 +10,7 @@
 	<typeAliases>
 		<typeAlias type="com.jungmin.app.member.vo.MemberVO" alias="member"/>
 		<typeAlias type="com.jungmin.app.board.vo.BoardVO" alias="board"/>
+		<typeAlias type="com.jungmin.app.board.vo.BoardReplyVO" alias="reply"/>
 		<typeAlias type="com.jungmin.app.files.vo.FilesVO" alias="files"/>
 	</typeAliases>
 

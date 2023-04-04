@@ -110,6 +110,23 @@
 						<img alt="${file.getFileName()}" src="${pageContext.request.contextPath}/app/upload/${file.getFileName()}">
 					</c:forEach>
 				</section>
+				
+				<section class="main accent2" style="padding:3%">
+					<header class="major" style="text-align:left;">
+						<h2>댓글</h2>
+						<p>여러분의 소중한 댓글을 작성해주세요.</p>
+					</header>
+					
+					<%-- ajax로 처리하려고 action 부분이 비어있다 --%>
+					<form method="post" action="#" class="combined" style="width:auto;">
+						<textarea name="content" id="content" placeholder="비속어를 사용하지 말아주세요." class="invert" rows="5" style="border-radius:0; resize:none;"></textarea>
+						<input id="register" type="button" class="primary" value="등록" onclick="comment()"/>
+					</form>
+					
+					<%-- 댓글 View 부분 --%>
+					<form id="replies" class="combined" style="flex-direction:column; margin:0; display:contents;">
+					</form>
+				</section>
 			</div>
 		</div>
 	</div>
@@ -119,4 +136,18 @@
 <script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+
+<%-- 댓글 관련 스크립트 작성 --%>
+<script type="text/javascript">
+	<%-- DOM 로딩 완료 후 실행 --%>
+	$(document).ready(function){
+		getList();
+	});
+	
+	<%-- 댓글 목록 가져오는 ajax --%>
+	function getList(){
+		
+	}
+</script>
+
 </html>

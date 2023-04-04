@@ -23,18 +23,18 @@
 		SELECT COUNT(BOARDNUM) FROM JUNGMIN_BOARD
 	</select>
 	
-<!-- 	참고용 -->
-<!-- 	CREATE TABLE JUNGMIN_BOARD( -->
-<!-- 		boardNum NUMBER(38), -->
-<!-- 		boardTitle VARCHAR2(2000), -->
-<!-- 		boardContent VARCHAR2(2000), -->
-<!-- 		boardMemberId VARCHAR2(2000), -->
-<!-- 		boardDate DATE DEFAULT SYSDATE, -->
-<!-- 		readCount NUMBER(38) DEFAULT 0, -->
-<!-- 		CONSTRAINT PK_BOARD PRIMARY KEY(boardNum), -->
-<!-- 		CONSTRAINT FK_BOARD_MEMBER FOREIGN KEY(boardMemberId)  -->
-<!-- 		REFERENCES JUNGMIN_MEMBER(memberId) -->
-<!-- 	); -->
+	<!-- 	참고용 -->
+	<!-- 	CREATE TABLE JUNGMIN_BOARD( -->
+	<!-- 		boardNum NUMBER(38), -->
+	<!-- 		boardTitle VARCHAR2(2000), -->
+	<!-- 		boardContent VARCHAR2(2000), -->
+	<!-- 		boardMemberId VARCHAR2(2000), -->
+	<!-- 		boardDate DATE DEFAULT SYSDATE, -->
+	<!-- 		readCount NUMBER(38) DEFAULT 0, -->
+	<!-- 		CONSTRAINT PK_BOARD PRIMARY KEY(boardNum), -->
+	<!-- 		CONSTRAINT FK_BOARD_MEMBER FOREIGN KEY(boardMemberId)  -->
+	<!-- 		REFERENCES JUNGMIN_MEMBER(memberId) -->
+	<!-- 	); -->
 	
 	<!-- 게시글 작성 (기본값인 컬럼은 굳이 안 넣음) -->
 	<insert id="insertBoard" parameterType="board">
@@ -71,5 +71,23 @@
 		SET boardTitle = #{boardTitle}, boardContent = #{boardContent}
 		WHERE boardNum = #{boardNum} AND ROWNUM = 1
 	</update>
+	
+	<!-- ************* 댓글 ************* -->
+		
+	<!-- 	참고용 -->
+	<!-- CREATE TABLE JUNGMIN_REPLY( -->
+	<!-- 	replyNum NUMBER(38) PRIMARY KEY, -->
+	<!-- 	boardNum NUMBER(38) REFERENCES JUNGMIN_BOARD(boardNum) ON DELETE CASCADE, -->
+	<!-- 	memberId VARCHAR2(1000) REFERENCES JUNGMIN_MEMBER(memberId), -->
+	<!-- 	replyContent VARCHAR2(2000) -->
+	<!-- ); -->
+	
+	<!-- 따로 댓글 페이징은 안 함 -->
+	<select id="getReplyList" parameterType="int" resultType="reply">
+		SELECT replyNum, boardNum, memberId, replyContent
+		FROM JUNGMIN_REPLY
+		WHERE boardNum = #{boardNum}
+		ORDER BY replyNum DESC
+	</select>
 	
 </mapper>
