@@ -33,7 +33,7 @@ public class FilesDAO {
 			String original = multi.getOriginalFileName(name); // 혹시 파일명이 중복될 경우, 자동으로 변경되기 때문에, 원본 이름도 저장해준다
 			
 			// 중복 시 정책상 변경된 이름
-			String systemName = multi.getFilesystemName(name); // 
+			String systemName = multi.getFilesystemName(name);
 			
 			// 우리가 첨부파일을 최대 3개까지 담을 수 있게 만들었는데, null일 수가 있음
 			if(systemName == null) {
@@ -44,6 +44,7 @@ public class FilesDAO {
 			vo.setBoardNum(boardNum);
 			vo.setFileNameOriginal(original); // 원본 파일 이름
 
+			// DB에 추가
 			sqlSession.insert("Files.insertFile", vo);
 		}
 	}

@@ -79,11 +79,12 @@ public class BoardFrontController extends HttpServlet{
 				}
 				break;
 			case "/board/BoardModify.bo":
-				// 글쓰기 페이지(수정)로 단순 이동 (단순 이동이기에 여기서 처리)
-				// 근데 DB 조회는 해야 됨 (수정이니까)
-				forward = new ActionForward();
-				forward.setPath("/app/board/boardWrite.jsp?boardNum=");
-				forward.setRedirect(false);
+				// 단순히 값을 가지고 이동하긴 하지만 DB 조회는 하므로 forward 객체가 필요하다
+				try {
+					forward = new BoardModify().execute(req, resp);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			default:
 				break;
