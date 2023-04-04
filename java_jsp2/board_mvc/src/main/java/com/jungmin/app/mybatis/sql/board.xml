@@ -96,4 +96,10 @@
 		VALUES (SEQ_REPLY.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})
 	</insert>
 	
+	<update id="updateReply" parameterType="reply">
+		UPDATE JUNGMIN_REPLY
+		SET replyContent = #{replyContent}
+		WHERE replyNum = #{replyNum}
+	</update>
+	
 </mapper>

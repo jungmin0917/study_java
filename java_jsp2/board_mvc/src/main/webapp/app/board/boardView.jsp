@@ -191,7 +191,7 @@
 				// 각각 수정, 수정완료, 삭제 버튼 만들어줄 것이다.
 				if("${sessionId}" == reply.memberId){
 					text += "<input type='button' id='ready" + (index + 1) + "' class='primary' onclick='readyToUpdate(" + (index + 1) + ")' value='수정'>";
-					text += "<input type='button' id='ok" + (index + 1) + "' class='primary' style='display:none' onclick='' value='수정완료'>";
+					text += "<input type='button' id='ok" + (index + 1) + "' class='primary' style='display:none' onclick='update(" + (index + 1) + "," + reply.replyNum + ")' value='수정완료'>";
 					text += "<input type='button' id='remove" + (index + 1) + "' class='primary' onclick='' value='삭제'>";
 				}
 
@@ -289,6 +289,32 @@
 		textarea.replaceWith("<div class='content' id='" + index + "' style='width:100%'><pre>" + replyList[index - 1].replyContent + "</pre></div>");
 		
 		modifyCheck = false;
+	}
+	
+	// 수정 완료
+	function update(index, replyNum){
+		let replyContent = $("textarea#" + index).val();
+		
+		// 이번엔 서버에 데이터 전달할 때 json 객체에 넣어서 보내보자.
+		let json = new Object();
+		
+		json.replyNum = replyNum;
+		json.replyContent = replyContent;
+		
+		$.ajax({
+			url: pageContext + "/board/BoardReplyModifyOk.bo",
+			type: "POST",
+			data: json, // 이렇게 할 수도 있음
+			success: function(res){
+				// 제대로 댓글 수정이 완료됐다면 modifyCheck를 다시 false로 바꿔주자
+				modifyCheck = false;
+				getList(); // 수정됐으므로 다시 댓글창 로드하기
+			},
+			error: function(err){
+				console.error(err);
+			}
+		});
+		
 	}
 	
 </script>

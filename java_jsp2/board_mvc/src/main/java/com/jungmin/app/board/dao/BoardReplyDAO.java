@@ -25,4 +25,9 @@ public class BoardReplyDAO {
 	public void insertReply(BoardReplyVO reply) {
 		sqlSession.insert("Board.insertReply", reply);
 	}
+	
+	// 댓글 수정하기
+	public void updateReply(BoardReplyVO reply) {
+		sqlSession.update("Board.updateReply", reply);
+	}
 }
