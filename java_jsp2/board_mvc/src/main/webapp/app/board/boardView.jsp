@@ -192,7 +192,7 @@
 				if("${sessionId}" == reply.memberId){
 					text += "<input type='button' id='ready" + (index + 1) + "' class='primary' onclick='readyToUpdate(" + (index + 1) + ")' value='수정'>";
 					text += "<input type='button' id='ok" + (index + 1) + "' class='primary' style='display:none' onclick='update(" + (index + 1) + "," + reply.replyNum + ")' value='수정완료'>";
-					text += "<input type='button' id='remove" + (index + 1) + "' class='primary' onclick='' value='삭제'>";
+					text += "<input type='button' id='remove" + (index + 1) + "' class='primary' onclick='deleteReply(" + reply.replyNum + ")' value='삭제'>";
 				}
 
 				text += "</div>";
@@ -316,6 +316,25 @@
 		});
 		
 	}
+
+	// 댓글 삭제
+	function deleteReply(replyNum){ // 그냥 delete는 예약어라 못 씀
+		$.ajax({
+			url: pageContext + "/board/BoardReplyDeleteOk.bo",
+			type: "POST",
+			data: {
+				"replyNum": replyNum
+			},
+			success: function(res){
+				modifyCheck = false; // 댓글창 다시 받아올 거라서, false로 해주기
+				getList();
+			},
+			error: function(err){
+				console.error(err);
+			}
+		});
+	}
+	
 	
 </script>
 

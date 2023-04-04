@@ -30,4 +30,8 @@ public class BoardReplyDAO {
 	public void updateReply(BoardReplyVO reply) {
 		sqlSession.update("Board.updateReply", reply);
 	}
+	
+	public void deleteReply(int replyNum) {
+		sqlSession.delete("Board.deleteReply", replyNum);
+	}
 }

@@ -80,6 +80,10 @@ public class MemberFrontController extends HttpServlet{
 					System.out.println("로그아웃 오류 " + e);
 				}
 				break;
+			case "/member/MemberFindIdOk.me":
+				
+				
+				break;
 			default:
 				break;
 		}

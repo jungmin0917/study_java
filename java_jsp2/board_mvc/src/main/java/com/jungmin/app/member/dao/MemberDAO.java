@@ -44,4 +44,12 @@ public class MemberDAO {
 		
 		return result > 0 ? true : false;
 	}
+	
+	public String findId(String memberEmail, String memberPw) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("memberEmail", memberEmail);
+		map.put("memberPw", memberPw);
+		
+		return sqlSession.selectOne("Member.findId", map);
+	}
 }

@@ -37,4 +37,9 @@
 		SELECT COUNT(*) FROM JUNGMIN_MEMBER
 		WHERE memberId = #{memberId} AND memberPw = #{memberPw}
 	</select>
+	
+	<select id="findId" parameterType="Map" resultType="member">
+		SELECT memberId FROM JUNGMIN_MEMBER
+		WHERE memberEmail = #{memberEmail} AND memberPw = #{memberPw}
+	</select>
 </mapper>

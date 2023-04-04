@@ -102,4 +102,12 @@
 		WHERE replyNum = #{replyNum}
 	</update>
 	
+	<delete id="deleteReply" parameterType="int">
+	<![CDATA[
+		DELETE FROM JUNGMIN_REPLY
+		WHERE replyNum = #{replyNum}
+		AND ROWNUM <= 1
+	]]>
+	</delete>
+	
 </mapper>
