@@ -12,7 +12,7 @@ public class SleepThread extends Thread {
 		System.out.println("카운트다운 5초");
 		IntStream.rangeClosed(1, 5).forEach(i -> {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000); // 1000 밀리초 동안 실행 정지
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
