@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.function.IntFunction;
 
 public class Ex1_HashSet {
 	public static void main(String[] args) {
@@ -54,22 +55,42 @@ public class Ex1_HashSet {
 		// HashSet은 중복되는 값이 들어가지 않기 때문에 난수 생성하기가 편하다.
 		// 예를 들어 로또 번호 6개를 생성 시 비교할 필요 없이 크기가 6이 될 때까지 반복해서 난수 생성하면 됨.
 	
-		// 로또 번호 생성기
-		HashSet<Integer> hs2 = new HashSet<>();
+//		// 로또 번호 생성기
+//		HashSet<Integer> hs2 = new HashSet<>();
+//		
+//		while(hs2.size() < 6) {
+//			Random rand = new Random();
+//			
+//			int n = rand.nextInt(1, 45);
+//			
+//			hs2.add(n);
+//		}
+//		
+//		List<Integer> list = new ArrayList<>(hs2); // HashSet을 List로 변환
+//		
+//		Collections.sort(list);
+//		
+//		System.out.println("로또 번호 : " + list);
 		
-		while(hs2.size() < 6) {
-			Random rand = new Random();
-			
-			int n = rand.nextInt(1, 45);
-			
-			hs2.add(n);
+		
+		
+		int arr[] = {1, 1, 2, 2, 2, 3, 3}; // 예를 들어 이런 배열이 있다고 하면
+		// 중복값을 걸러낼 때 뭐 메소드를 사용해도 되지만, 이를 Set 자료구조로 넣으면 알아서 중복값이 사라지게 된다
+		
+		HashSet<Integer> hs3 = new HashSet<>();
+		
+		for (int i : arr) {
+			hs3.add(i);
 		}
 		
-		List<Integer> list = new ArrayList<>(hs2); // HashSet을 List로 변환
+		System.out.println(hs3);
 		
-		Collections.sort(list);
-		
-		System.out.println("로또 번호 : " + list);
+		// new Integer[0] : set이 add해둔 요소의 개수만큼 자동으로 배열의 index가 생성된다.
+		// 즉 해당 Set의 size만큼 배열의 index가 생성된다.
+		Integer[] arr2 = hs3.toArray(new Integer[0]);
+		for (int i : arr2) {
+			System.out.println(i + " ");
+		}
 	}
 }
 
