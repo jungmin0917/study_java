@@ -24,7 +24,7 @@ public class Ex2_FileInputStream {
 				
 				input.read(byteArr); // 한 번에 읽어서 바이트 배열에 넣어준다.
 				
-				String str = new String(byteArr);
+				String str = new String(byteArr); // 바이트 배열을 이용해서 새 String 객체를 만든다
 				
 				System.out.println(str);
 				
