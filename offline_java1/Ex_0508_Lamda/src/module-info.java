@@ -5,6 +5,5 @@
  * @author Administrator
  *
  */
-module Ex_0503_Socket {
-	requires java.desktop;
+module Ex_0508_Lamda {
 }
